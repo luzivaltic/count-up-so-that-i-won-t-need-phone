@@ -1,0 +1,284 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap');
+/* font-family: 'Red Hat Text', sans-serif; */
+
+:root {
+
+    /* Primary */
+    --grayish-blue : hsl(237, 18%, 59%);
+    --soft-red : hsl(345, 95%, 68%);
+
+    /* Neutral */
+    --white : white;
+    --dark-desaturated-blue : hsl(236, 21%, 26%);
+    --dark-blue : hsl(235, 16%, 14%);
+    --very-dark-blue : hsl(234, 17%, 12%);
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Red Hat Text', sans-serif; 
+}
+
+.container {
+    position: relative;
+    width: 100vh;
+    height: 100vw;
+}
+
+.image-container {
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient( 0deg , #2A2133 , #1A1A25 );
+    overflow: hidden;
+}
+
+.image-container .stars {
+    position: absolute;   
+    background-image: url("./images/bg-stars.svg");
+    width: 100%;
+    height: 70%;
+}
+
+.image-container .hills {
+    position: absolute;
+    background-image: url("./images/pattern-hills.svg");
+    background-size: cover;
+    width: 100%;
+    height: 30%;
+    background-repeat: no-repeat;
+    bottom: 0px;
+}
+
+.count-down {
+    position: relative;
+    color: white;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+    font-size: calc( 35px + 1.5vw );
+}
+
+.count-down .heading {
+    position: relative;
+    font-size: calc( 10px + 1.5vw );
+    color: white;
+    padding-top: 10%;
+    margin-bottom: 100px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.count-down .counter {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.count-down .counter .timer {
+    position: relative;
+    width: 20vw;
+    height: 20vw;
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 10px;
+    margin-right: 2%;
+    background-color: var(--dark-desaturated-blue);
+    box-shadow: 0px 10px 0 black;
+}
+
+.count-down .counter .timer .cover {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background-color: rgba(0, 0, 0, 0.219);
+    transition: transform 2s;
+    transform: rotateX(-180deg);
+    transform-origin :bottom;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.counter .timer .name {
+    position: absolute;
+    font-size: 10px;
+    bottom: -2.5em;
+    width: 100%;
+    color: var(--dark-desaturated-blue);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.counter .timer .half {
+    color: var(--soft-red);
+    width: 100%;
+    height: 50%;
+}
+
+.counter .timer .half-top,
+.counter .timer .half-bottom {
+    position: absolute;
+    background-color: transparent;
+}
+
+.counter .timer .half-bottom {
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.counter .timer .half-top {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px 10px 0px 0px;
+    backface-visibility: hidden;
+}
+
+.counter .timer .half-top .top-back {
+    position: absolute;
+    background-color: #2C2C44;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0px 0px;
+    overflow: hidden;
+    z-index: 99;
+    transform: perspective(300px);
+}
+
+.counter .timer .half-top .top-front {
+    position: absolute;
+    background-color: #2C2C44;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0px 0px;
+
+    box-shadow: inset 0 -10vw 0 #2C2C44;
+
+    transform-origin: bottom;
+
+    backface-visibility: hidden; 
+    transform-style: preserve-3d;
+    z-index: 100;
+    transform : perspective( 300px );
+    overflow: hidden;
+}
+
+.counter .timer .bottom-front {
+    position: absolute;
+    background-color: var(--dark-desaturated-blue);
+    border-radius: 0px 0px 10px 10px;
+    width: 100%;
+    height: 100%;
+
+    box-shadow: inset 0 -10vw 0 var(--dark-desaturated-blue);
+    transform-origin : top;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    z-index: 98;
+    transform: perspective(300px);
+    overflow: hidden;
+}
+
+.counter .timer .bottom-back {
+    position: absolute;
+    transform: perspective(300px);
+    width: 100%;
+    z-index: 97;
+}
+
+.timer .half-bottom .number-container {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translate( -50% ,-50%);
+    z-index: 1000000000;
+}
+
+.timer .half-top .number-container {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate( -50% ,50%);
+}
+
+.timer .circle {
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    z-index: 10000000;
+}
+
+.circle .left {
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    z-index: 100000000;
+    background-color: black;
+}
+
+.circle .right {
+    position: absolute;
+    right: 0px;
+    transform: translate( 50% , -50% );
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    z-index: 100000;
+}
+
+
+.image-container .icon-container {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000000000;
+    width: 200px;
+}
+
+.image-container .icon-container svg {
+    width: 5vw;
+    margin-right: 0px;
+    transition: fill 0.25s;
+    fill: #8385A9;
+    cursor: pointer;
+}
+
+.image-container .icon-container svg:hover {
+    fill: var(--soft-red);
+}
+
+.buttons {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.buttons button {
+    margin-right: 20px;
+    font-size: 20px;
+    color: var(--dark-blue);
+    background-color: var(--grayish-blue);
+    padding: 10px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
